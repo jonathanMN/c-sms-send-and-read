@@ -89,5 +89,31 @@ namespace smsApp
             }
         }
 
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (this.txtPhonenum.Text != "" || this.txtMessage.Text != "")
+                {
+                    if (objsendSMS.sendMsg(this.port, this.cbPorts.Text, baudRate, this.txtPhonenum.Text, this.txtMessage.Text))
+                    {
+                        MessageBox.Show("Message has sent successfully");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to send message");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please Enter a number and a message.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
     }
 }

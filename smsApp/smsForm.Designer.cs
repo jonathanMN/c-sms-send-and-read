@@ -31,8 +31,8 @@
             this.tabControls = new System.Windows.Forms.TabControl();
             this.Tabsendsms = new System.Windows.Forms.TabPage();
             this.tabReadsms = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMessage = new System.Windows.Forms.TextBox();
+            this.txtPhonenum = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -68,8 +68,8 @@
             this.Tabsendsms.Controls.Add(this.label2);
             this.Tabsendsms.Controls.Add(this.label1);
             this.Tabsendsms.Controls.Add(this.btnSend);
-            this.Tabsendsms.Controls.Add(this.textBox2);
-            this.Tabsendsms.Controls.Add(this.textBox1);
+            this.Tabsendsms.Controls.Add(this.txtPhonenum);
+            this.Tabsendsms.Controls.Add(this.txtMessage);
             this.Tabsendsms.Location = new System.Drawing.Point(4, 22);
             this.Tabsendsms.Name = "Tabsendsms";
             this.Tabsendsms.Padding = new System.Windows.Forms.Padding(3);
@@ -89,20 +89,20 @@
             this.tabReadsms.Text = "Read Messages";
             this.tabReadsms.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtMessage
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 79);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(482, 78);
-            this.textBox1.TabIndex = 1;
+            this.txtMessage.Location = new System.Drawing.Point(16, 79);
+            this.txtMessage.Multiline = true;
+            this.txtMessage.Name = "txtMessage";
+            this.txtMessage.Size = new System.Drawing.Size(482, 78);
+            this.txtMessage.TabIndex = 1;
             // 
-            // textBox2
+            // txtPhonenum
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 33);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtPhonenum.Location = new System.Drawing.Point(16, 33);
+            this.txtPhonenum.Name = "txtPhonenum";
+            this.txtPhonenum.Size = new System.Drawing.Size(218, 20);
+            this.txtPhonenum.TabIndex = 1;
             // 
             // btnSend
             // 
@@ -112,6 +112,7 @@
             this.btnSend.TabIndex = 1;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // label1
             // 
@@ -255,8 +256,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnSend;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPhonenum;
+        private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.TabPage tabReadsms;
         private System.Windows.Forms.ListView lvMessage;
         private System.Windows.Forms.ColumnHeader columnHeader1;
