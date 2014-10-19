@@ -109,7 +109,6 @@ namespace smsApp
                 ExecCommand(port, "AT+CMGF=1", 300, "Failed to set message format.");
                 // Use character set "ISO 8859-1"
                 ExecCommand(port, "AT+CSCS=\"iso-8859-1\"", 300, "Failed to set character set.");
-                //ExecCommand(port, "AT+CSCS=\"PCCP437\"", 300, "Failed to set character set.");
                 // Select SIM storage
                 ExecCommand(port, "AT+CPMS=\"SM\"", 300, "Failed to select message storage.");
                 // Read the messages
