@@ -11,9 +11,6 @@ namespace smsApp
 {
     class smsMethods
     {
-        //public SerialPort port;
-
-        //Open Port
         public SerialPort OpenPort(string strPortName, string strBaudRate)
         {
             receiveNow = new AutoResetEvent(false);
@@ -33,7 +30,6 @@ namespace smsApp
             return port;
         }
 
-        //Close Port
         public void ClosePort(SerialPort port)
         {
             port.Close();
@@ -41,18 +37,15 @@ namespace smsApp
             port = null;
         }
 
-        //Execute AT Command
         public string ExecCommand(SerialPort port, string command, int responseTimeout, string errorMessage)
         {
             try
             {
-                // receiveNow = new AutoResetEvent();
                 port.DiscardOutBuffer();
                 port.DiscardInBuffer();
                 receiveNow.Reset();
                 port.Write(command + "\r");
 
-                //Thread.Sleep(3000); //3 seconds
                 string input = ReadResponse(port, responseTimeout);
                 if ((input.Length == 0) || ((!input.EndsWith("\r\n> ")) && (!input.EndsWith("\r\nOK\r\n"))))
                     throw new ApplicationException("No success message was received.");
@@ -64,7 +57,6 @@ namespace smsApp
             }
         }
 
-        //Receive data from port
         public void port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             if (e.EventType == SerialData.Chars)
@@ -92,9 +84,6 @@ namespace smsApp
             return buffer;
         }
 
-
-        #region Read SMS
-
         public AutoResetEvent receiveNow;
 
         public ShortMessageCollection ReadSMS(SerialPort port, string strPortName, string strBaudRate)
@@ -102,7 +91,6 @@ namespace smsApp
             ShortMessageCollection messages = null;
             try
             {
-                #region Execute Command
                 // Check connection
                 ExecCommand(port, "AT", 300, "No phone connected at " + strPortName + ".");
                 // Use message format "Text mode"
@@ -113,12 +101,7 @@ namespace smsApp
                 ExecCommand(port, "AT+CPMS=\"SM\"", 300, "Failed to select message storage.");
                 // Read the messages
                 string input = ExecCommand(port, "AT+CMGL=\"ALL\"", 5000, "Failed to read the messages.");
-                #endregion
-
-                #region Parse messages
                 messages = ParseMessages(input);
-                #endregion
-
             }
             catch (Exception ex)
             {
@@ -128,12 +111,10 @@ namespace smsApp
             {
                 if (port != null)
                 {
-                    #region Close Port
                     ClosePort(port);
                     port.Close();
                     port.DataReceived -= new SerialDataReceivedEventHandler(port_DataReceived);
                     port = null;
-                    #endregion
                 }
             }
 
@@ -141,7 +122,6 @@ namespace smsApp
                 return messages;
             else
                 return null;
-            //DisplayMessages(messages);
         }
         public ShortMessageCollection ParseMessages(string input)
         {
@@ -165,10 +145,6 @@ namespace smsApp
             return messages;
         }
 
-        #endregion
-
-        #region Send SMS
-
         static AutoResetEvent readNow = new AutoResetEvent(false);
 
         public bool sendMsg(SerialPort port, string strPortName, string strBaudRate, string PhoneNo, string Message)
@@ -176,8 +152,6 @@ namespace smsApp
             bool isSend = false;
             try
             {
-
-                //this.port = OpenPort(strPortName,strBaudRate);
                 string recievedData = ExecCommand(port, "AT", 300, "No phone connected at " + strPortName + ".");
                 recievedData = ExecCommand(port, "AT+CMGF=1", 300, "Failed to set message format.");
                 String command = "AT+CMGS=\"" + PhoneNo + "\"";
@@ -206,9 +180,9 @@ namespace smsApp
             {
                 if (port != null)
                 {
-                    //port.Close();
-                    //port.DataReceived -= new SerialDataReceivedEventHandler(port_DataReceived);
-                    //port = null;
+                    port.Close();
+                    port.DataReceived -= new SerialDataReceivedEventHandler(port_DataReceived);
+                    port = null;
                 }
             }
         }
@@ -218,23 +192,14 @@ namespace smsApp
                 readNow.Set();
         }
 
-        #endregion
-
-        #region Delete SMS
         public void DeleteMsg(SerialPort port, string strPortName, string strBaudRate)
         {
             try
             {
-                #region Open Port
-                //this.port = OpenPort(strPortName,strBaudRate);
-                #endregion
-
-                #region Execute Command
                 string recievedData = ExecCommand(port, "AT", 300, "No phone connected at " + strPortName + ".");
                 recievedData = ExecCommand(port, "AT+CMGF=1", 300, "Failed to set message format.");
                 String command = "AT+CMGD=1,3";
                 recievedData = ExecCommand(port, command, 300, "Failed to delete message");
-                #endregion
 
                 if (recievedData.EndsWith("\r\nOK\r\n"))
                     recievedData = "Message delete successfully";
@@ -254,15 +219,12 @@ namespace smsApp
             {
                 if (port != null)
                 {
-                    #region Close Port
-                    //port.Close();
-                    //port.DataReceived -= new SerialDataReceivedEventHandler(port_DataReceived);
-                    //port = null;
-                    #endregion
+                    port.Close();
+                    port.DataReceived -= new SerialDataReceivedEventHandler(port_DataReceived);
+                    port = null;
                 }
             }
         }
-        #endregion
 
     }
 
