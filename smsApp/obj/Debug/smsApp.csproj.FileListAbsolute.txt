@@ -1,0 +1,1 @@
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\bin\Debug\smsApp.exe.config
