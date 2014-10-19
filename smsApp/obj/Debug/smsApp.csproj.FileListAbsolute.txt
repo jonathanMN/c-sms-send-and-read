@@ -1,1 +1,9 @@
 c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\bin\Debug\smsApp.exe.config
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\bin\Debug\smsApp.exe
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\bin\Debug\smsApp.pdb
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.csprojResolveAssemblyReference.cache
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.Properties.Resources.resources
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.smsForm.resources
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.csproj.GenerateResource.Cache
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.exe
+c:\users\jonathan\documents\visual studio 2013\Projects\smsApp\smsApp\obj\Debug\smsApp.pdb
