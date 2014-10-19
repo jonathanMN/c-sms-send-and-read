@@ -50,6 +50,7 @@ namespace smsApp
                 if (this.port != null)
                 {
                     this.lblStatus.Text = "Connected at " + this.cbPorts.Text;
+                    DisplayMessages();
                     cbPorts.Enabled = false;
                     btnConnect.Enabled = false;
                     btnDisconnect.Enabled = true;
@@ -114,6 +115,18 @@ namespace smsApp
                 MessageBox.Show(ex.Message);
             }
         }
-
+        void DisplayMessages()
+        {
+            lvMessages.Items.Clear();
+            objShortMessageCollection = objsendSMS.ReadSMS(this.port, this.cbPorts.Text, baudRate);
+            lvMessages.BeginUpdate();
+            foreach (ShortMessage msg in objShortMessageCollection)
+            {
+                ListViewItem item = new ListViewItem(new string[] { msg.Index.ToString(), msg.Sent, msg.Sender, msg.Message });
+                item.Tag = msg;
+                lvMessages.Items.Add(item);
+            }
+            lvMessages.EndUpdate();
+        }
     }
 }

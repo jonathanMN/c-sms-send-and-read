@@ -37,7 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.lvMessage = new System.Windows.Forms.ListView();
+            this.lvMessages = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -80,7 +80,7 @@
             // 
             // tabReadsms
             // 
-            this.tabReadsms.Controls.Add(this.lvMessage);
+            this.tabReadsms.Controls.Add(this.lvMessages);
             this.tabReadsms.Location = new System.Drawing.Point(4, 22);
             this.tabReadsms.Name = "tabReadsms";
             this.tabReadsms.Padding = new System.Windows.Forms.Padding(3);
@@ -143,20 +143,20 @@
             this.lblStatus.TabIndex = 1;
             this.lblStatus.Text = "Not Connected";
             // 
-            // lvMessage
+            // lvMessages
             // 
-            this.lvMessage.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvMessages.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
-            this.lvMessage.FullRowSelect = true;
-            this.lvMessage.Location = new System.Drawing.Point(14, 18);
-            this.lvMessage.Name = "lvMessage";
-            this.lvMessage.Size = new System.Drawing.Size(486, 169);
-            this.lvMessage.TabIndex = 0;
-            this.lvMessage.UseCompatibleStateImageBehavior = false;
-            this.lvMessage.View = System.Windows.Forms.View.Details;
+            this.lvMessages.FullRowSelect = true;
+            this.lvMessages.Location = new System.Drawing.Point(14, 18);
+            this.lvMessages.Name = "lvMessages";
+            this.lvMessages.Size = new System.Drawing.Size(486, 169);
+            this.lvMessages.TabIndex = 0;
+            this.lvMessages.UseCompatibleStateImageBehavior = false;
+            this.lvMessages.View = System.Windows.Forms.View.Details;
             // 
             // columnHeader1
             // 
@@ -259,7 +259,7 @@
         private System.Windows.Forms.TextBox txtPhonenum;
         private System.Windows.Forms.TextBox txtMessage;
         private System.Windows.Forms.TabPage tabReadsms;
-        private System.Windows.Forms.ListView lvMessage;
+        private System.Windows.Forms.ListView lvMessages;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
